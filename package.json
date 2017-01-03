@@ -1,0 +1,29 @@
+{
+  "name": "webproject",
+  "version": "1.0.0",
+  "description": "test project",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node server.js",
+    "build": "webpack --watch",
+    "start": "npm run build && npm run serve"
+  },
+  "author": "vadim s",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.0",
+    "lodash": "^4.17.2"
+  },
+  "devDependencies": {
+    "css-loader": "^0.26.1",
+    "eslint": "^3.11.1",
+    "extract-text-webpack-plugin": "^2.0.0-beta.4",
+    "html-webpack-plugin": "^2.26.0",
+    "http-server": "^0.9.0",
+    "node-sass": "^4.1.1",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^4.1.1",
+    "webpack": "^2.1.0-beta.27",
+    "webpack-dev-server": "^2.1.0-beta.12"
+  }
+}
