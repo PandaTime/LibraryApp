@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -21791,13 +21791,13 @@ exports.push([module.i, "body {\n  background-color: transparent; }\n\ntable {\n
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11), __webpack_require__(12)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12), __webpack_require__(13)(module)))
 
 /***/ },
 /* 4 */
 /***/ function(module, exports) {
 
-module.exports = "<!doctype html>\r\n<html lang=\"en\">\r\n  <head>\r\n    <meta charset=\"utf-8\">\r\n    <title>My HTML File</title>\r\n    <link rel=\"stylesheet\" href=\"bundle.css\">\r\n  </head>\r\n  <body ng-app=\"webproject\">\r\n    <div>\r\n      I can add: {{ 1+2 }}.\r\n    </div>\r\n    <div>\r\n      <label>First name:</label>\r\n      <input ng-model=\"firstName\">\r\n      <label>Last name:</label>\r\n      <input ng-model=\"lastName\">\r\n      <div>\r\n        Hello {{firstName + ' ' + lastName}}!\r\n      </div>\r\n    </div>\r\n    <div ng-controller=\"MainCtrl as $ctrl\">\r\n      Reverse Hello {{$ctrl.invertString(firstName + ' ' + lastName)}}!\r\n      <hr>\r\n      <button ng-click=\"$ctrl.onBooksClick()\">\r\n        Get Books\r\n      </button>\r\n      <br>\r\n      <table>\r\n        <tr>\r\n          <th>ID</th>\r\n          <th>Name</th>\r\n          <th>Author</th>\r\n        </tr>\r\n        <tr ng-repeat=\"book in $ctrl.bookList track by $index\">\r\n          <td>{{book.id}}</td>\r\n          <td>{{book.name}}</td>\r\n          <td>{{book.author}}</td>\r\n        </tr>\r\n      </table>\r\n    </div>\r\n  </body>\r\n</html>\r\n"
+module.exports = "<!doctype html>\r\n<html lang=\"en\">\r\n  <head>\r\n    <meta charset=\"utf-8\">\r\n    <base href=\"/\">\r\n    <title>My HTML File</title>\r\n    <link rel=\"stylesheet\" href=\"bundle.css\">\r\n  </head>\r\n  <body ng-app=\"webproject\">\r\n    <div id=\"container\">\r\n      <div ui-view></div>\r\n    </div>\r\n  </body>\r\n</html>\r\n"
 
 /***/ },
 /* 5 */
@@ -21809,7 +21809,7 @@ function routes($stateProvider){
 	$stateProvider
 		.state('home', {
 			url: '/',
-			template: __webpack_require__(14),
+			template: __webpack_require__(11),
 			controller: 'MainCtrl',
 			controllerAs: 'mCtrl'
 		})
@@ -21881,7 +21881,7 @@ class TestController {
         .catch(response => this.log.error('TestController response', response));
     }
 }
-/* harmony export (immutable) */ exports["a"] = TestController;
+/* unused harmony export default */
 
 
 TestController.$inject = ['_', '$log', 'LibraryService'];
@@ -54934,6 +54934,12 @@ module.exports = function() {
 /* 11 */
 /***/ function(module, exports) {
 
+module.exports = "<div>\r\n    <div>\r\n        I can add: {{ 1+2 }}.\r\n    </div>\r\n    <div>\r\n        <label>First name:</label>\r\n        <input ng-model=\"firstName\">\r\n        <label>Last name:</label>\r\n        <input ng-model=\"lastName\">\r\n        <div>\r\n            Hello {{firstName + ' ' + lastName}}!\r\n        </div>\r\n    </div>\r\n    <div ng-controller=\"MainCtrl as $ctrl\">\r\n        Reverse Hello {{$ctrl.invertString(firstName + ' ' + lastName)}}!\r\n        <hr>\r\n        <button ng-click=\"$ctrl.onBooksClick()\">\r\n            Get Books\r\n        </button>\r\n        <br>\r\n        <table>\r\n            <tr>\r\n                <th>ID</th>\r\n                <th>Name</th>\r\n                <th>Author</th>\r\n            </tr>\r\n            <tr ng-repeat=\"book in $ctrl.bookList track by $index\">\r\n                <td>{{book.id}}</td>\r\n                <td>{{book.name}}</td>\r\n                <td>{{book.author}}</td>\r\n            </tr>\r\n        </table>\r\n    </div>\r\n</div>"
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
 var g;
 
 // This works in non-strict mode
@@ -54956,7 +54962,7 @@ module.exports = g;
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 module.exports = function(module) {
@@ -54982,7 +54988,7 @@ module.exports = function(module) {
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55013,18 +55019,20 @@ module.exports = function(module) {
 
 __WEBPACK_IMPORTED_MODULE_4_angular___default.a.module('webproject', [__WEBPACK_IMPORTED_MODULE_5_angular_ui_router___default.a, __WEBPACK_IMPORTED_MODULE_2__app_routing_js__["a" /* default */]])
 	.constant('_', __WEBPACK_IMPORTED_MODULE_3_lodash___default.a)
+	.config(routing)
 	.controller('MainCtrl', __WEBPACK_IMPORTED_MODULE_6__homePage_main_ctrl_js__["a" /* default */])
-	.controller('TestController', __WEBPACK_IMPORTED_MODULE_7__test_controller__["a" /* default */])
+	//.controller('TestController', TestController)
 	.service('LibraryService', __WEBPACK_IMPORTED_MODULE_8__library_service__["a" /* default */]);
 
 
-
-
-/***/ },
-/* 14 */
-/***/ function(module, exports) {
-
-module.exports = ""
+function routing($urlRouterProvider, $locationProvider){//, NotificationProvider) {
+	$locationProvider.html5Mode(true);
+	$urlRouterProvider.otherwise('/');
+	/*NotificationProvider.setOptions({
+		positionY: 'top',
+		positionX: 'right'
+	});*/
+}
 
 /***/ }
 /******/ ]);

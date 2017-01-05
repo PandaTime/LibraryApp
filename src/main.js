@@ -11,8 +11,17 @@ import LibraryService from './library.service';
 
 angular.module('webproject', [uirouter, routes])
 	.constant('_', _)
+	.config(routing)
 	.controller('MainCtrl', MainCtrl)
-	.controller('TestController', TestController)
+	//.controller('TestController', TestController)
 	.service('LibraryService', LibraryService);
 
 
+function routing($urlRouterProvider, $locationProvider){//, NotificationProvider) {
+	$locationProvider.html5Mode(true);
+	$urlRouterProvider.otherwise('/');
+	/*NotificationProvider.setOptions({
+		positionY: 'top',
+		positionX: 'right'
+	});*/
+}

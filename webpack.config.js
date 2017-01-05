@@ -2,6 +2,7 @@
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin'),
     HtmlWebpackPlugin = require('html-webpack-plugin');
+
 var express = require('./server');
 
 module.exports = {
@@ -12,7 +13,7 @@ module.exports = {
         publicPath: ''
     },
     // see details here https://webpack.github.io/docs/webpack-dev-server.html#api
-    devServer: { setup: express.server_api },
+    devServer: { setup: express },
     // see details http://webpack.github.io/docs/configuration.html#devtool
     devtool: '#source-map',
     module: {
