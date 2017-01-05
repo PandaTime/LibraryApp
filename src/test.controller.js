@@ -21,18 +21,3 @@ export default class TestController {
 }
 
 TestController.$inject = ['_', '$log', 'LibraryService'];
-
-
-
-/*
-// old style controller
-
-function TestController(_) {
-    return {
-        invertString: function(str) {
-            return _(str).split('').reverse().join('');
-        }
-    };
-}
-export default ['_', TestController];
-*/

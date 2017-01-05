@@ -18,7 +18,7 @@
         Hello {{firstName + ' ' + lastName}}!
       </div>
     </div>
-    <div ng-controller="TestController as $ctrl">
+    <div ng-controller="MainCtrl as $ctrl">
       Reverse Hello {{$ctrl.invertString(firstName + ' ' + lastName)}}!
       <hr>
       <button ng-click="$ctrl.onBooksClick()">

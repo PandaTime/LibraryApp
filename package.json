@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.6.0",
+    "angular-ui-router": "^0.3.2",
     "lodash": "^4.17.2"
   },
   "devDependencies": {
