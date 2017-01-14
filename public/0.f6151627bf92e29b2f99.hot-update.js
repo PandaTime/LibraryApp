@@ -1,4 +1,10 @@
-export default class LibraryService {
+webpackHotUpdate(0,{
+
+/***/ 18:
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+class LibraryService {
     constructor($log, $http) {
         this.log = $log;
         this.$http = $http;
@@ -18,5 +24,11 @@ export default class LibraryService {
         return this.$http.put(`/api/books/${book.id}`, book);
     }
 }
+/* harmony export (immutable) */ exports["a"] = LibraryService;
+
 
 LibraryService.$inject = ['$log', '$http'];
+
+/***/ }
+
+})

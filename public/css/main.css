@@ -1,0 +1,28 @@
+body {
+  background-color: transparent; }
+
+table {
+  border-collapse: collapse;
+  width: 100%; }
+
+table, th, td {
+  border: 1px solid black; }
+
+.book-table {
+  border: 1px double black; }
+
+.selected-book span {
+  min-width: 10%; }
+
+.flex-box {
+  display: flex;
+  flex-wrap: wrap; }
+  .flex-box div {
+    min-width: 15%; }
+  .flex-box .id {
+    min-width: 10%; }
+  .flex-box .name {
+    min-width: 30%; }
+  .flex-box .delete-book {
+    min-width: 8%;
+    background-color: red; }

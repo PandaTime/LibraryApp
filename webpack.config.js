@@ -1,24 +1,28 @@
 'use strict';
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin'),
-    HtmlWebpackPlugin = require('html-webpack-plugin');
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
+    BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
-var express = require('./server');
 
 module.exports = {
-    entry: './src/main.js',
+    entry: [
+        'webpack/hot/only-dev-server',
+        './src/main.js'
+    ],
     output: {
         path: './public',
         filename: "/js/[name].js",
         publicPath: ''
     },
     // see details here https://webpack.github.io/docs/webpack-dev-server.html#api
-    devServer: { setup: express },
+    //devServer: { setup: express },
     // see details http://webpack.github.io/docs/configuration.html#devtool
-    devtool: '#source-map',
+    //devtool: '#source-map',
     module: {
         loaders: [
-            {test: /\.css$/,loader: 'css-loader!sass-loader'},
+            {test: /\.scss$/,loader: ExtractTextPlugin.extract('css-loader!sass-loader')},
+            {test: /\.css$/,loader: ExtractTextPlugin.extract('css-loader!sass-loader')},
             {test: /\.html$/,loader: 'raw-loader'}
         ]
     },
@@ -28,7 +32,12 @@ module.exports = {
             css: [ "src/main.css" ],
             template: 'index.html'
         }),
-        new ExtractTextPlugin('/css/[name].[ext]')
+        new ExtractTextPlugin('/css/[name].css'),
+        new BrowserSyncPlugin({
+            // browse to http://localhost:3000/ during development,
+            // ./public directory is being served
+            proxy: 'http://localhost:8080/'
+        })
     ]
 };
 

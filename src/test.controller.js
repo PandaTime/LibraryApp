@@ -12,11 +12,11 @@ export default class TestController {
     onBooksClick() {
         this.log.info('TestController', 'onBookClick');
         this.LibraryService.books()
-        .then((response) => {
-            this.log.info('TestController response', response);
-            this.bookList = response.data;
-        })
-        .catch(response => this.log.error('TestController response', response));
+            .then((response) => {
+                this.log.info('TestController response', response);
+                this.bookList = response.data;
+            }, (err)=>{console.log('err', err)})
+            //.catch(response => this.log.error('TestController response error', response));
     }
 }
 

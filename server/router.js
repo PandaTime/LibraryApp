@@ -1,6 +1,5 @@
 var api = {},
     _ = require('lodash');
-
 module.exports = api;
 
 var library = [
@@ -53,17 +52,41 @@ var library = [
         "price": 30.50,
         "pages_i": 475
     }
-]
+];
 api.initialize = function(app, publicPath){
-    // see details here http://expressjs.com/en/4x/api.html#app.get
+    app.all('*', (req, res, next)=>{
+        console.log('123',req.params);
+        next();
+    });
     app.get('/api/books', books);
+    app.get('/api/books/:id', (req, res)=>{
+        var id = req.params.id;
+        res.json(library.find((el)=>el.id==id));
+    });
+    app.put('/api/books/:id', (req, res)=>{
+        var id = req.params.id,
+            index = library.findIndex((el)=>el.id==id),
+            type;
+        if(index === -1){
+            library.push(req.body);
+            type = 'new';
+        }else{
+            library[index] = req.body;
+            type = 'update';
+        }
+        res.status(200).json({type});
+    })
+    app.delete('/api/books/:id', (req,res)=>{
+        var id = req.params.id;
+        library = library.filter((el)=>el.id != id);
+        books(req, res);
+    });
     app.get('*', (req, res)=>{
         res.sendFile(publicPath + '\\index.html')
     })
 };
 
 function books(req, res) {
-    console.info('Request:', req.method, req.url);
-    // see details here http://expressjs.com/en/4x/api.html#res.json
-    res.json(_.map(library, function(book){ return { id: book.id, name: book.name, author: book.author }; }));
+    var result = _.map(library, function(book){ return { id: book.id, name: book.name, author: book.author }; });
+    res.json(result);
 }

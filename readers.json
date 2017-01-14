@@ -1,0 +1,57 @@
+[
+  {
+    "id": "CH-250123",
+    "isActive": false,
+    "balance": "$344.98",
+    "name": "Debora Webster",
+    "gender": "female",
+    "email": "deborawebster@xixan.com",
+    "phone": "+1 (818) 411-2157",
+    "address": "208 Vanderveer Street, Kenvil, Virginia, 5270",
+    "registered": "2014-04-16T10:20:30 -03:00"
+  },
+  {
+    "id": "KH-234123",
+    "isActive": true,
+    "balance": "$54.11",
+    "name": "Trisha Barrera",
+    "gender": "female",
+    "email": "trishabarrera@xixan.com",
+    "phone": "+1 (881) 525-3891",
+    "address": "187 Hubbard Place, Templeton, Ohio, 871",
+    "registered": "2016-01-02T03:31:51 -02:00"
+  },
+  {
+    "id": "TH-569239",
+    "isActive": false,
+    "balance": "$105.70",
+    "name": "Winifred Vinson",
+    "gender": "female",
+    "email": "winifredvinson@xixan.com",
+    "phone": "+1 (973) 509-3367",
+    "address": "176 Maujer Street, Winston, Hawaii, 3339",
+    "registered": "2014-01-21T04:57:45 -02:00"
+  },
+  {
+    "id": "TG-236432",
+    "isActive": true,
+    "balance": "$506.16",
+    "name": "Juliette Mcfarland",
+    "gender": "female",
+    "email": "juliettemcfarland@xixan.com",
+    "phone": "+1 (951) 563-3763",
+    "address": "691 Cyrus Avenue, Foscoe, California, 7276",
+    "registered": "2016-01-23T01:17:35 -02:00"
+  },
+  {
+    "id": "RH-36531",
+    "isActive": true,
+    "balance": "$628.13",
+    "name": "Myra Calderon",
+    "gender": "female",
+    "email": "myracalderon@xixan.com",
+    "phone": "+1 (947) 565-2761",
+    "address": "914 Berry Street, Grazierville, Arizona, 8570",
+    "registered": "2015-03-25T06:43:36 -02:00"
+  }
+]
