@@ -2,11 +2,14 @@
 <hr>
 <table>
     <tr>
+        <th>Update</th>
         <th><a href ng-click="$ctrl.orderBy = 'id'" ng-class="{ selected: $ctrl.orderBy === 'id'}">ID</a></th>
         <th><a href ng-click="$ctrl.orderBy = 'name'" ng-class="{ selected: $ctrl.orderBy === 'name'}">Name</a></th>
         <th><a href ng-click="$ctrl.orderBy = 'author'" ng-class="{ selected: $ctrl.orderBy === 'author'}">Author</a></th>
+
     </tr>
     <tr ng-repeat="book in $ctrl.bookList | filter : $ctrl.searchString | orderBy : $ctrl.orderBy track by $index ">
+        <td><span class="glyphicon glyphicon-wrench" ng-click="$ctrl.EditBook(book.id)"></span></td>
         <td>{{book.id}}</td>
         <td>{{book.name}}</td>
         <td>{{book.author}}</td>

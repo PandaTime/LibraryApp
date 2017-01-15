@@ -1,5 +1,5 @@
 import './main.scss';
-//import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../index.html';
 import routes from './app.routing.js';
 
@@ -8,6 +8,7 @@ import angular from 'angular';
 import uirouter from 'angular-ui-router';
 import MainCtrl from './homePage/main.ctrl.js'
 import BookListComponent from './homePage/book-list/book-list.component';
+import BookEditorComponent from './homePage/book-editor/book-editor.component';
 import LibraryService from './library.service';
 
 angular.module('webproject', [uirouter, routes])
@@ -15,6 +16,7 @@ angular.module('webproject', [uirouter, routes])
 	.config(routing)
 	.controller('MainCtrl', MainCtrl)
 	.component('bookList', BookListComponent)
+	.component('bookEditor', BookEditorComponent)
 	.service('LibraryService', LibraryService);
 
 

@@ -10,3 +10,6 @@ table, th, td {
 .selected {
     background-color: yellow;
 }
+.glyphicon.glyphicon-wrench{
+    cursor: pointer;
+}

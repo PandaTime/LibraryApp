@@ -1,65 +1,12 @@
 <div>
     <div ng-controller="MainCtrl as $ctrl">
         Reverse Hello {{$ctrl.invertString(firstName + ' ' + lastName)}}!
-        <div class="selected-book">
-            <div>
-                <label>ID:</label>
-                <input ng-model="$ctrl.selectedBook.id" type='text'/>
-            </div>
-            <div>
-                <label>Name:</label>
-                <input ng-model="$ctrl.selectedBook.name" type='text'/>
-            </div>
-            <div>
-                <label>Author:</label>
-                <input ng-model="$ctrl.selectedBook.author" type='text'/>
-            </div>
-            <div>
-                <label>Series:</label>
-                <input ng-model="$ctrl.selectedBook.series_t" type='text'/>
-            </div>
-            <div>
-                <label>Sequence:</label>
-                <input ng-model="$ctrl.selectedBook.sequence_i" type='number'/>
-            </div>
-            <div>
-                <label>Genre:</label>
-                <input ng-model="$ctrl.selectedBook.genre_s" type='text'/>
-            </div>
-            <div>
-                <label>In Stock:</label>
-                <input ng-model="$ctrl.selectedBook.inStock" type='checkbox'/>
-            </div>
-            <div>
-                <span>Price:</span>
-                <input ng-model="$ctrl.selectedBook.price" type='number'/>
-            </div>
-            <div>
-                <span>Pages:</span>
-                <input ng-model="$ctrl.selectedBook.pages_i" type='number'/>
-            </div>
-            <div>
-                <span>Cat:</span>
-                <input ng-model="$ctrl.selectedBook.cat" type='text'/>
-            </div>
-        </div>
-        <button class="button" ng-click="$ctrl.onSaveBook()">SAVE INFO</button>
+
         <button ng-click="$ctrl.onBooksClick()">
             Get Books
         </button>
         <br>
-        <div class="book-table">
-            <div class="flex-box">
-                <div class="id">ID</div>
-                <div class="name">Name</div>
-                <div>Author</div>
-            </div>
-            <div class="flex-box" ng-repeat="book in $ctrl.bookList track by $index">
-                <a href='' class="id" ng-click="$ctrl.selectBook(book.id)">{{book.id}}</a>
-                <div class="name">{{book.name}}</div>
-                <div>{{book.author}}</div>
-                <div class="delete-book" ng-click="$ctrl.delClick(book.id)">CLICK TO DELETE</div>
-            </div>
-        </div>
+        <book-editor></book-editor>
+        <book-list></book-list>
     </div>
 </div>

@@ -3,11 +3,11 @@ export default class LibraryService {
         this.log = $log;
         this.$http = $http;
     }
-    books() {
+    bookList() {
         this.log.info('LibraryService', 'books');
-        return this.$http.get('/api/books')//.then((succeed)=>{console.log('suc', succeed)}, (err)=>{console.log('err', err)});
+        return this.$http.get('/api/books')
     }
-    editBook(id){
+    bookInfo(id){
         return this.$http.get(`api/books/${id}`);
     }
     deleteBook(id){
