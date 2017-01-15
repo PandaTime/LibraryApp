@@ -4,19 +4,17 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
+var express = require('./server.js');
 
 module.exports = {
-    entry: [
-        'webpack/hot/only-dev-server',
-        './src/main.js'
-    ],
+    entry: [ './src/main.js'],
     output: {
         path: './public',
         filename: "/js/[name].js",
         publicPath: ''
     },
     // see details here https://webpack.github.io/docs/webpack-dev-server.html#api
-    //devServer: { setup: express },
+    devServer: { setup: express },
     // see details http://webpack.github.io/docs/configuration.html#devtool
     //devtool: '#source-map',
     module: {
@@ -32,12 +30,7 @@ module.exports = {
             css: [ "src/main.css" ],
             template: 'index.html'
         }),
-        new ExtractTextPlugin('/css/[name].css'),
-        new BrowserSyncPlugin({
-            // browse to http://localhost:3000/ during development,
-            // ./public directory is being served
-            proxy: 'http://localhost:8080/'
-        })
+        new ExtractTextPlugin('/css/[name].css')
     ]
 };
 
