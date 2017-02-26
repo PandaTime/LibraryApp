@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4">
+            <input type="search" class="form-control" placeholder="Search" ng-model="$ctrl.searchString"
+            ng-model-options="{ debounce: 1000 }">
+        </div>
+    </div>
+    <br>
+    <table class="table table-hover">
+        <tr>
+            <th><a href ng-click="$ctrl.orderBy = 'id'" ng-class="{ selected: $ctrl.orderBy === 'id'}">ID</a></th>
+            <th><a href ng-click="$ctrl.orderBy = 'name'" ng-class="{ selected: $ctrl.orderBy === 'name'}">Name</a></th>
+            <th><a href ng-click="$ctrl.orderBy = 'author'" ng-class="{ selected: $ctrl.orderBy === 'author'}">Author</a></th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="book in $ctrl.bookList | filter : $ctrl.searchString | orderBy : $ctrl.orderBy track by $index "
+            ng-click="$ctrl.onSelect(book.id)" ng-class="{ info: $ctrl.selectedBookId === book.id}">
+            <td><a ui-sref=".edit({ bookId: book.id})">{{book.id}}</a></td>
+            <td>{{book.name}}</td>
+            <td>{{book.author}}</td>
+            <td><button class="btn btn-default btn-sm" ng-click="$ctrl.onRemove(book.id)">Remove</button></td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <h4 class="modal-title">
+        {{::$ctrl.title}}
+        <button type="button" class="close" aria-label="Close" ng-click="$dismiss($ctrl.reject)"><span aria-hidden="true">&times;</span></button>
+    </h4>
+</div>
+<div class="modal-body">
+    <p>
+        {{::$ctrl.message}}
+    </p>
+</div>
+<div class="modal-footer">
+    <button ng-click="$dismiss($ctrl.reject)" type="button" class="btn btn-default">Cancel</button>
+    <button ng-click="$close()" type="button" class="btn btn-primary">Proceed</button>
+</div>

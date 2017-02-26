@@ -24,5 +24,19 @@
             "error",
             "always"
         ]
+    },
+    "globals": {
+        "require": true,
+        "module": true,
+        "describe": true,
+        "it": true,
+        "xit": true,
+        "beforeEach": true,
+        "beforeAll": true,
+        "expect": true,
+        "inject": true,
+        "spyOn": true,
+        "jasmine": true
     }
+    
 }

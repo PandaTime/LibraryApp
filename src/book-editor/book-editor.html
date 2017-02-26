@@ -1,0 +1,103 @@
+<ng-form class="form-horizontal" name="form">
+    <div class="form-group" ng-class="{ 'has-error': form.id.$invalid }">
+        <label class="col-sm-2 control-label" for="book_id">Id</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="book_id" ng-model="$ctrl.book.id" name="id" lb-required
+                lb-async-validate="$ctrl.book && $ctrl.BooksService.isUniqueId($ctrl.bookId, $viewValue)"
+                ng-minlength="14" ng-maxlength="14">
+            <span class="help-block"  ng-show="form.id.$error.lbAsyncValidate">
+                ID should be unique
+            </span>
+            <span class="help-block"  ng-show="form.id.$pending.lbAsyncValidate">
+                Validating...
+            </span>
+            <span class="help-block" ng-show="form.id.$error.required">
+                ID is required
+            </span>
+            <span class="help-block" ng-show="form.id.$error.minlength||form.id.$error.maxlength">
+                ID should contain 14 symbols
+            </span>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error': form.name.$invalid }">
+        <label class="col-sm-2 control-label" for="name">Name</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="name" ng-model="$ctrl.book.name" name="name" lb-required ng-maxlength="50">
+            <span class="help-block" ng-show="form.name.$error.required">
+                Name is required
+            </span>
+            <span class="help-block" ng-show="form.name.$error.maxlength">
+                Name is too long
+            </span>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error': form.author.$invalid }">
+        <label class="col-sm-2 control-label" for="author">Author</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="author" name="author" ng-model="$ctrl.book.author" lb-required>
+            <span class="help-block" ng-show="form.author.$error.required">
+                Author name is required
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="category">Category</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="category" ng-model="$ctrl.book.cat" lb-array>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="series">Series</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="series" ng-model="$ctrl.book.series_t">
+        </div>
+    </div>
+    <div class="form-group"  ng-class="{ 'has-error': form.sequence.$invalid }">
+        <label class="col-sm-2 control-label" for="sequence">Sequence</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="sequence" type="number" name="sequence" ng-model="$ctrl.book.sequence_i" ng-min="1">
+            <span class="help-block" ng-show="form.sequence.$error.min">
+                Field is too low
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="genre">Genre</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="genre" ng-model="$ctrl.book.genre_s">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="genre">In stock</label>
+        <div class="col-sm-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="$ctrl.book.inStock">
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="price">Price</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="number" id="price" ng-model="$ctrl.book.price" step="any">
+        </div>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error': form.pages.$invalid }">
+        <label class="col-sm-2 control-label" for="pages">Pages</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="number" id="pages" name="pages" ng-model="$ctrl.book.pages_i" ng-min="2" ng-max="2000" lb-required>
+            <span class="help-block" ng-show="form.pages.$error.required">
+                Field is too long
+            </span>
+            <span class="help-block" ng-show="form.pages.$error.min||form.pages.$error.max">
+                Filed should be between 2 and 20000
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-default" ng-click="$ctrl.onSave()" ng-disabled="form.$pristine || form.$invalid">Save</button>
+        </div>
+    </div>
+</ng-form>

@@ -1,0 +1,9 @@
+.hor-splitter .hor-splitter-bar {
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    padding-left: 50%;
+    padding-right: 50%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+

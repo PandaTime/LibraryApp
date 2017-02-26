@@ -1,0 +1,93 @@
+<ng-form class="form-horizontal" name="form">
+    <confirm-unsaved-changes is-unsaved-changes="form.$dirty" title="Reader changes" message="Your changes will be lost. Are you sure?"></confirm-unsaved-changes>
+    <div class="form-group" ng-class="{ 'has-error': form.id.$invalid }">
+        <label class="col-sm-2 control-label" for="reader_id">Id</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="reader_id" name="id" ng-model="$ctrl.reader.id" lb-required
+                lb-async-validate="$ctrl.reader && $ctrl.ReadersService.isUniqueId($ctrl.readerId, $viewValue)"
+                ng-minlength="9" ng-maxlength="9">
+            <span class="help-block"  ng-show="form.id.$error.lbAsyncValidate">
+                ID should be unique
+            </span>
+            <span class="help-block"  ng-show="form.id.$pending.lbAsyncValidate">
+                Validating...
+            </span>
+            <span class="help-block" ng-show="form.id.$error.required">
+                ID is required
+            </span>
+            <span class="help-block" ng-show="form.id.$error.minlength||form.id.$error.maxlength">
+                ID should contain 9 symbols
+            </span>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error': form.name.$invalid }">
+        <label class="col-sm-2 control-label" for="name">Name</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="name" name="name" ng-model="$ctrl.reader.name" lb-required>
+            <span class="help-block" ng-show="form.name.$error.required">
+                Name is required
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="isActive">is Active</label>
+        <div class="col-sm-10">
+            <div class="checkbox">
+                <label>
+                   <input id="isActive" type="checkbox" ng-model="$ctrl.reader.isActive">
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="gender">Gender</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="gender" ng-model="$ctrl.reader.gender">
+                <option value="male">male</option>
+                <option value="female">female</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error': form.email.$invalid }">
+        <label class="col-sm-2 control-label" for="series">Email</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="email" name="email" type="email" ng-model="$ctrl.reader.email"
+                ng-pattern="$ctrl.emailRegexp">
+            <span class="help-block" ng-show="form.email.$error.pattern">
+                Please enter valid email
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="phone">Phone</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="phone" type="tel" ng-model="$ctrl.reader.phone">
+        </div>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error': form.address.$invalid }">
+        <label class="col-sm-2 control-label" for="address">Address</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="address" name="address" ng-model="$ctrl.reader.address" lb-required
+                ng-maxlength="50">
+            <span class="help-block" ng-show="form.address.$error.required">
+                Address is required
+            </span>
+            <span class="help-block" ng-show="form.address.$error.maxlength">
+                Address is too long
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="registered">Registered</label>
+        <div class="col-sm-10">
+            <div class="checkbox">
+                <input class="form-control" id="registered" ng-model="$ctrl.reader.registered">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-default" ng-click="$ctrl.onSave()"  ng-disabled="form.$pristine || form.$invalid">Save</button>
+        </div>
+    </div>
+</ng-form>

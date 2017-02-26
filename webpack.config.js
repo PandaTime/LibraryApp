@@ -1,48 +1,51 @@
-'use strict';
-
-var ExtractTextPlugin = require('extract-text-webpack-plugin'),
-    HtmlWebpackPlugin = require('html-webpack-plugin'),
-    BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-
-// loading server
-require('./server');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var serverApi = require('./srv/server-api');
+var webpack = require('webpack');
 
 module.exports = {
-    entry: [
-        'webpack/hot/only-dev-server',
-        './src/app.js'
-    ],
+    entry: './src/main.js',
     output: {
-        path: './public',
-        filename: "/js/[name].js",
-        publicPath: ''
+        filename: 'bundle.js'
     },
     // see details here https://webpack.github.io/docs/webpack-dev-server.html#api
+    devServer: { setup: serverApi },
     // see details http://webpack.github.io/docs/configuration.html#devtool
-    //devtool: '#source-map',
+    devtool: '#inline-source-map',
     module: {
-        loaders: [
-            {test: /\.scss$/, loader:  ExtractTextPlugin.extract({fallbackLoader: "style-loader", loader:'css-loader!sass-loader'})},
-            {test: /\.css$/, loader:  ExtractTextPlugin.extract({fallbackLoader: "style-loader", loader:'css-loader!sass-loader'})},
-            {test: /\.html$/,loader: 'raw-loader'},
-            {test: /\.(svg|woff|woff2)?(\?v=\d+.\d+.\d+)?$/, loader: 'url-loader?limit=8192&name=./[hash].[ext]'},
-            {test: /\.(eot|ttf)$/, loader: 'file-loader'}
-        ]
+        loaders: [{
+            test: /\.css$/,
+            exclude: /node_modules/,
+            loader: ExtractTextPlugin.extract({
+                loader: 'css-loader'
+            })
+        }, 
+        {
+            // ASSET LOADER
+            // Reference: https://github.com/webpack/file-loader
+            // Copy png, jpg, jpeg, gif, svg, woff, woff2, ttf, eot files to output
+            // Rename the file using the asset hash
+            // Pass along the updated reference to your code
+            // You can add here any file extension you want to get copied to your output
+            test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+            loader: 'file-loader'
+        },        
+        {
+            // HTML LOADER
+            // Reference: https://github.com/webpack/raw-loader
+            // Allow loading html through js
+            test: /\.(html|json)$/,
+            loader: 'raw-loader'
+        },
+        { 
+            // BABEL LOADER
+            // Reference: https://babeljs.io/docs/setup/#installation
+            test: /\.js$/, 
+            exclude: /node_modules/, 
+            loader: "babel-loader" 
+        }]
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            filename: 'index.html',
-            css: [ "src/main.css" ],
-            template: 'index.html'
-        }),
-        new ExtractTextPlugin('/[name].css'),
-        new BrowserSyncPlugin({
-            // browse to http://localhost:3000/ during development,
-            // ./public directory is being served
-            proxy: 'http://localhost:8080/'
-        })
+        new ExtractTextPlugin({ filename: 'bundle.css', disable: false, allChunks: true })
     ]
-};
-
-
+}
 

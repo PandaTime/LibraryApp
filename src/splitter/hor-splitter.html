@@ -1,0 +1,7 @@
+<div class="hor-splitter" >
+    <div class="top-pane" ng-transclude="topPane"></div>
+    <div class="hor-splitter-bar" ng-click="$ctrl.bottomHide = !$ctrl.bottomHide">
+        <span class="glyphicon " aria-hidden="true" ng-class="{ 'glyphicon-chevron-down': $ctrl.bottomHide, 'glyphicon-chevron-up': !$ctrl.bottomHide}"></span>
+    </div>
+    <div class="bottom-pane" ng-transclude="bottomPane" ng-hide="$ctrl.bottomHide"></div>
+</div>

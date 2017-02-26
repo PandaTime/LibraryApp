@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4">
+            <input type="search" class="form-control" placeholder="Search" ng-model="$ctrl.searchString">
+        </div>
+    </div>
+    <br>
+    <table class="table table-hover">
+        <tr>
+            <th><a href ng-click="$ctrl.orderBy = 'id'" ng-class="{ selected: $ctrl.orderBy === 'id'}">ID</a></th>
+            <th><a href ng-click="$ctrl.orderBy = 'name'" ng-class="{ selected: $ctrl.orderBy === 'name'}">Name</a></th>
+            <th><a href ng-click="$ctrl.orderBy = 'isActive'" ng-class="{ selected: $ctrl.orderBy === 'isActive'}">Active</a></th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="reader in $ctrl.readerList | filter : $ctrl.searchString | orderBy : $ctrl.orderBy track by $index "
+            ng-click="$ctrl.onSelect(reader.id)" ng-class="{ info: $ctrl.selectedReaderId === reader.id}">
+            <td><a ui-sref="^.edit-reader({ readerId: reader.id})">{{reader.id}}</a></td>
+            <td>{{reader.name}}</td>
+            <td><input type="checkbox" ng-model="reader.isActive" onclick="return false;"></td>
+            <td><button class="btn btn-default btn-sm" ng-click="$ctrl.onRemove(reader.id)">Remove</button></td>
+        </tr>
+    </table>
+</div>
