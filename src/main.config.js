@@ -45,11 +45,28 @@ export default function config($stateProvider, $urlServiceProvider) {
     })
     .state({
         name: 'app.readers', 
-        url: '/readers',
-        component: 'readersList'
+		abstract: true,
+        template: 
+`
+<hor-splitter>
+    <top-pane>
+        <readers-list></readers-list>
+    </top-pane>
+    <bottom-pane>
+        <lb-panel title="Reader details">
+            <ui-view></ui-view>
+        </lb-panel>
+    </bottom-pane>
+</hor-splitter>
+`
     })
+	.state({
+		name: 'app.readers.empty',
+        url: '/readers',
+		template: '<h1>Select any reader above</h1>'
+	})
     .state({
-        name: 'app.edit-reader', 
+        name: 'app.readers.edit', 
         url: '/readers/{readerId}',
         component: 'readerEditor',
         resolve: {

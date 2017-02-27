@@ -14,7 +14,7 @@
         </tr>
         <tr ng-repeat="reader in $ctrl.readerList | filter : $ctrl.searchString | orderBy : $ctrl.orderBy track by $index "
             ng-click="$ctrl.onSelect(reader.id)" ng-class="{ info: $ctrl.selectedReaderId === reader.id}">
-            <td><a ui-sref="^.edit-reader({ readerId: reader.id})">{{reader.id}}</a></td>
+            <td><a ui-sref=".edit({ readerId: reader.id})">{{reader.id}}</a></td>
             <td>{{reader.name}}</td>
             <td><input type="checkbox" ng-model="reader.isActive" onclick="return false;"></td>
             <td><button class="btn btn-default btn-sm" ng-click="$ctrl.onRemove(reader.id)">Remove</button></td>

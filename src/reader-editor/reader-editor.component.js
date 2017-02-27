@@ -7,8 +7,15 @@ class ReaderEditorController {
         this.$scope = $scope;
         this.$state = $state;
         this.emailRegexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    }
-
+		this.datePicker = {
+			format: 'MMMM dd, yyyy',//'fullDate',
+			opened: false,
+			open: function(){
+				this.opened = true;
+			}
+		};
+	}
+	
     $onInit() {
         this.log.info('$onInit');
         this.$scope.$watch(() => this.readerId, this.loadReader.bind(this));
@@ -24,6 +31,7 @@ class ReaderEditorController {
         .then((response) => {
             this.log.info('response', response);
             this.reader = response.data;
+			this.reader.registered = new Date(response.data.registered);
         })
         .catch(response => this.log.error('response', response));
     }

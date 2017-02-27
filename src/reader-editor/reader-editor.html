@@ -81,7 +81,12 @@
         <label class="col-sm-2 control-label" for="registered">Registered</label>
         <div class="col-sm-10">
             <div class="checkbox">
-                <input class="form-control" id="registered" ng-model="$ctrl.reader.registered">
+				<p class="input-group">
+				  <input type="text" class="form-control" uib-datepicker-popup="{{$ctrl.datePicker.format}}" ng-model="$ctrl.reader.registered" is-open="$ctrl.datePicker.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+				  <span class="input-group-btn">
+					<button type="button" class="btn btn-default" ng-click="$ctrl.datePicker.open()"><i class="glyphicon glyphicon-calendar"></i></button>
+				  </span>
+				</p>
             </div>
         </div>
     </div>
