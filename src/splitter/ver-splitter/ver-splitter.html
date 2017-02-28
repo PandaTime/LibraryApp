@@ -1,0 +1,7 @@
+<div class="ver-splitter" >
+    <div class="ver-left-pane" ng-transclude="topPane" ng-style="{width: $ctrl.title + 'vw'}"></div>
+<!--    <div class="ver-splitter-bar" ng-click="$ctrl.bottomHide = !$ctrl.bottomHide">
+        <span class="glyphicon " aria-hidden="true" ng-class="{ 'glyphicon-chevron-down': $ctrl.bottomHide, 'glyphicon-chevron-up': !$ctrl.bottomHide}"></span>
+    </div>-->
+    <div class="ver-right-pan" ng-transclude="bottomPane" ng-hide="$ctrl.bottomHide"  ng-style="{width: 98 - $ctrl.title + 'vw'}"></div>
+</div>

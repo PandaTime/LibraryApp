@@ -1,5 +1,6 @@
 @import '~bootstrap/dist/css/bootstrap.css';
 @import './book-list/style.css';
-@import './splitter/style.css';
+@import 'splitter/hor-splitter/style.css';
+@import 'splitter/ver-splitter/style.css';
 
 

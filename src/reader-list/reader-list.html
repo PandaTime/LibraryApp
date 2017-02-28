@@ -12,7 +12,8 @@
             <th><a href ng-click="$ctrl.orderBy = 'isActive'" ng-class="{ selected: $ctrl.orderBy === 'isActive'}">Active</a></th>
             <th></th>
         </tr>
-        <tr ng-repeat="reader in $ctrl.readerList | filter : $ctrl.searchString | orderBy : $ctrl.orderBy track by $index "
+        <tr ng-repeat="reader in $ctrl.readerList.slice($ctrl.maxElements * $ctrl.currentPage - 10, $ctrl.maxElements * $ctrl.currentPage)
+            | filter : $ctrl.searchString | orderBy : $ctrl.orderBy track by $index "
             ng-click="$ctrl.onSelect(reader.id)" ng-class="{ info: $ctrl.selectedReaderId === reader.id}">
             <td><a ui-sref=".edit({ readerId: reader.id})">{{reader.id}}</a></td>
             <td>{{reader.name}}</td>
@@ -20,4 +21,5 @@
             <td><button class="btn btn-default btn-sm" ng-click="$ctrl.onRemove(reader.id)">Remove</button></td>
         </tr>
     </table>
+    <ul uib-pagination total-items="$ctrl.readerList.length" ng-model="$ctrl.currentPage"></ul>
 </div>

@@ -48,7 +48,7 @@ export default function config($stateProvider, $urlServiceProvider) {
 		abstract: true,
         template: 
 `
-<hor-splitter>
+<ver-splitter wsize="48">
     <top-pane>
         <readers-list></readers-list>
     </top-pane>
@@ -57,7 +57,7 @@ export default function config($stateProvider, $urlServiceProvider) {
             <ui-view></ui-view>
         </lb-panel>
     </bottom-pane>
-</hor-splitter>
+</ver-splitter>
 `
     })
 	.state({

@@ -19,7 +19,8 @@ import lbRequired from './validators/lb-required.directive';
 import lbAsyncValidate from './validators/lb-async-validate.directive';
 import lbArray from './parsers/lb-array.directive.js';
 import lbPanel from './lb-panel/lb-panel.component';
-import horSplitter from './splitter/hor-splitter.component';
+import horSplitter from './splitter/hor-splitter/hor-splitter.component.js';
+import verSplitter from './splitter/ver-splitter/ver-splitter.component.js';
 import promisesTest from './promises-test/promises-test.component';
 import login from './login/login.component';
 import navigationBar from './navigation-bar/navigation-bar.component';
@@ -50,6 +51,7 @@ export default angular.module('library', ['angular-logger', uiRouter, uiBootstra
 .component('confirmUnsavedChanges', confirmUnsavedChanges)
 .component('lbPanel', lbPanel)
 .component('horSplitter', horSplitter)
+.component('verSplitter', verSplitter)
 .component('promisesTest', promisesTest)
 .component('navigationBar', navigationBar)
 .component('login', login)

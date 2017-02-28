@@ -1,0 +1,17 @@
+.ver-right-pan, .ver-left-pane{
+    float: left;
+}
+.ver-splitter .container{
+    width: inherit;
+}
+
+/*
+.ver-splitter .ver-splitter-bar {
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    padding-left: 50%;
+    padding-right: 50%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}*/
+

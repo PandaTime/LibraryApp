@@ -4,7 +4,7 @@ const lbPanelComponent = {
     template: PanelTemplate,
     transclude: true,
     bindings: {
-        title: '@'
+        title: '@',
     }
 };
 

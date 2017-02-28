@@ -6,6 +6,8 @@ class ReaderListController{
         this.log = $log.getInstance('ReaderListController');
         this.ReadersService = ReadersService;
         this.orderBy = 'id';
+        this.maxElements = 10;
+        this.currentPage = 1;
     }
 
     $onInit() {
@@ -14,7 +16,7 @@ class ReaderListController{
         this.readerListApi = {
             update: this.loadReaders.bind(this)
         };
-    }   
+    }
 
     loadReaders() {
         this.ReadersService.list()
